@@ -4,7 +4,7 @@
 
 2. Clone the repository to your local machine
 ```
-$ git clone "https://github.com/<YourGitHubUsername>/COVID-19_Predictor_dataset.git"
+$ git clone "https://github.com/<YourGitHubUsername>/Operating-Systems.git"
 ```
 3. Create a branch where you can do your local work.
 
@@ -33,7 +33,7 @@ $ git push -u origin branchname
 
 1. Create a remote upstream for this repository
 ```
-$ git remote add upstream "https://github.com/theabhishek07/COVID-19_Predictor_dataset"
+$ git remote add upstream "https://github.com/theabhishek07/Operating-Systems"
 ```
 
 2. Fetch upstream changes in local machine
