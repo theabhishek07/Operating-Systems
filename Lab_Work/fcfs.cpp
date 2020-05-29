@@ -1,83 +1,64 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
- 
-// Function to find the waiting time for all 
-// processes
-void findWaitingTime(int processes[], int n, 
-                          int bt[], int wt[])
+void read_process(char ArrayP_id[8])
 {
-    // waiting time for first process is 0
-    wt[0] = 0;
- 
-    // calculating waiting time
-    for (int  i = 1; i < n ; i++ )
-        wt[i] =  bt[i-1] + wt[i-1] ;
-}
- 
-// Function to calculate turn around time
-void findTurnAroundTime( int processes[], int n, 
-                  int bt[], int wt[], int tat[])
-{
-    // calculating turnaround time by adding
-    // bt[i] + wt[i]
-    for (int  i = 0; i < n ; i++)
-        tat[i] = bt[i] + wt[i];
-}
- 
-//Function to calculate average time
-void findavgTime( int processes[], int n, int bt[])
-{
-    int wt[n], tat[n], total_wt = 0, total_tat = 0;
- 
-    //Function to find waiting time of all processes
-    findWaitingTime(processes, n, bt, wt);
- 
-    //Function to find turn around time for all processes
-    findTurnAroundTime(processes, n, bt, wt, tat);
- 
-    //Display processes along with all details
-    cout << "Processes  "<< " Burst time  "
-         << " Waiting time  " << " Turn around time\n";
- 
-    // Calculate total waiting time and total turn 
-    // around time
-    for (int  i=0; i<n; i++)
+    cout<<"Enter the processes:-->"<<endl;
+    for(int i=0; i<8; i++)
     {
-        total_wt = total_wt + wt[i];
-        total_tat = total_tat + tat[i];
-        cout << "   " << i+1 << "\t\t" << bt[i] <<"\t    "
-            << wt[i] <<"\t\t  " << tat[i] <<endl;
+        cin>>ArrayP_id[i];
     }
- 
-    cout << "Average waiting time = "
-         << (float)total_wt / (float)n;
-    cout << "\nAverage turn around time = "
-         << (float)total_tat / (float)n;
 }
- 
-// Driver code
+void read_BT(int BT_array[8])
+{
+cout<<"Enter the Burst Time w.r.t processes:-->"<<endl;
+for(int j=0; j<8; j++)
+{
+    cin>>BT_array[j];
+}
+}
+
+void waiting_time(int WT_array[8],int BT_array[8])
+{
+    WT_array[0]=0;
+    cout<<"The Waiting Time for the processe:-->"<<endl;
+    for(int p=1; p<8; p++)
+    {
+        WT_array[p] = WT_array[p-1] + BT_array[p-1];
+    }
+    for(int q=0; q<8 ; q++)
+    {
+        cout<<"The Waiting time for the process:--> "<<q<<endl;
+        cout<<WT_array[q]<<endl;
+    }
+}
+void TAT(int TAT_array[8],int BT_array[8],int WT_array[8])
+{
+    cout<<"The TAT for the processes:-->"<<endl;
+    for(int e=0; e<8; e++)
+    {
+        TAT_array[e] = BT_array[e] + WT_array[e];
+        cout<<"The TAT for process "<<e+1<<endl;
+        cout<<TAT_array[e]<<endl;
+    }
+}
+
+void Gantt_chart(int WT_array[8])
+{
+    WT_array[0]=0;
+        cout<<"| A | B | C | D | E | F | G | H |"<<endl;
+    cout<<WT_array[0]<<"   "<<WT_array[1]<<"   "<<WT_array[2]<<"   "<<WT_array[3]<<"   "<<WT_array[4]<<"   "<<WT_array[5]<<"   "<<WT_array[6]<<"   "<<WT_array[7]<<endl;
+        puts("+-----+------------+--------------+-----------------+");
+}
+
 int main()
 {
-    //process id's
-	int n,i;
-cout<<"Enter the number of processes: ";
-cin>>n;
-int processes[n],burst[n];
-   for(i=0;i<n;i++)
-{
-cout<<"Enter the process details for "<<i+1<<" process: ";
-cin>>processes[i];
-}
-    
- 
-    //Burst time of all processes
-   for(i=0;i<n;i++)
-{
-cout<<"Enter the burst details for "<<i+1<<" process: ";
-cin>>burst[i];
-}
- 
-    findavgTime(processes, n,  burst);
-cout<<endl;
+    char ArrayP_id[8];
+    int BT_array[8], WT_array[8], TAT_array[8];
+    read_process(ArrayP_id);
+    read_BT(BT_array);
+    waiting_time(WT_array, BT_array);
+    TAT(TAT_array, BT_array, WT_array);
+    Gantt_chart(WT_array);
     return 0;
+    
 }
