@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
-#define MSGSIZE 7
+#define MSGSIZE 16
 
-char* m1="hello1";
-char* m2="hello2";
-char* m3="hello3";
+char* m1="hello, world #1";
+char* m2="hello, world #2";
+char* m3="hello, world #3";
 
 char inbuf[MSGSIZE];
 

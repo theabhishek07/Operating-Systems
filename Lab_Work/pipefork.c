@@ -15,9 +15,7 @@ int main()
 	if(pipe(p)<0)
 		exit(1);
 
-	int x=0;
-	x=fork();
-	if(x==0)
+	if(fork()>0)
 	{
 		write(p[1], msg1, MSGSIZE);
 		write(p[1], msg2, MSGSIZE);	
